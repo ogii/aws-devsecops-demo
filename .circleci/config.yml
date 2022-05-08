@@ -129,14 +129,14 @@ workflows:
           requires:
             - scan_build_docker_image
           docker-network: host
-          app-id: bdf5d6af-4c4f-43d9-ba1b-ee305873cb6c
+          app-id: 05351111-ca53-482d-894d-43d87d69b07c
           steps:
             - checkout
             - aws-ecr/ecr-login
             - run:
                 name: Run Stackhawk Scan
                 command: |
-                  docker run -d --rm -p5000:5000 $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO:0.1.<< pipeline.number >>
+                  docker run -d --rm -p3000:3000 $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO:0.1.<< pipeline.number >>
       - terraform_deploy_aws_ecs:
           requires:
             - stackhawk/hawkscan-local    
