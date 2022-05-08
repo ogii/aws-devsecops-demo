@@ -77,7 +77,7 @@ jobs:
             terraform -chdir=./terraform/ecs apply \
               -var docker_img_name=$AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO \
               -var docker_img_tag=0.1.<< pipeline.number >> \
-              -var key_pair=devrel-angel-rivera \
+              -var key_pair=demos \
               -auto-approve
             export ENDPOINT="$(terraform -chdir=./terraform/ecs output load_balancer_hostname)"
             mkdir -p /tmp/ecs/
